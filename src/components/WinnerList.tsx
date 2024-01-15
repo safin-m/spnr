@@ -1,4 +1,4 @@
-import "./Winnerlist.css";
+import "./WinnerList.css";
 
 const Winnerlist = () => {
   return (
