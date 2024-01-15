@@ -1,0 +1,58 @@
+.winner-list {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  justify-content: flex-start;
+  row-gap: 1rem;
+  height: 500px;
+  width: 50%;
+  background-color: #1a1e25;
+}
+.winner-list:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.01);
+}
+.winner-list-nameplate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.winner-list-items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
+  padding: 10px;
+  padding-top: 20px;
+}
+.winner-list-item {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
+  border-radius: 5px;
+  height: 60px;
+  width: 600px;
+  background-color: #1a1e25;
+  align-items: center;
+}
+.winner-list-item:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.01);
+  color: blanchedalmond;
+}

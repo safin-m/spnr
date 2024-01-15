@@ -1,0 +1,82 @@
+.wheel-maker {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  justify-content: flex-start;
+  row-gap: 1rem;
+  height: 500px;
+  width: 30%;
+  background-color: #1a1e25;
+}
+.wheel-maker:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.01);
+}
+.wheel-maker-nameplate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.wheel-maker-items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: auto;
+  padding: 10px;
+  padding-top: 10px;
+  align-items: center;
+}
+.wheel-maker-item {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-around;
+  border-radius: 5px;
+  height: 60px;
+  width: 340px;
+  background-color: #1c212a;
+  align-items: center;
+}
+.wheel-maker-item:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.05);
+}
+.btn {
+  background-color: #1c212a;
+  color: blanchedalmond;
+  border: 1px solid blanchedalmond;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  width: 25px;
+  height: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn:hover {
+  background-color: blanchedalmond;
+  color: #1c212a;
+  border: 1px solid #1c212a;
+  transform: scale(1.05);
+}
+.btn:active {
+  background-color: #1c212a;
+  color: blanchedalmond;
+  border: 1px solid blanchedalmond;
+  transform: scale(1.05);
+}
