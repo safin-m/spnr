@@ -2,7 +2,7 @@
   margin: 5%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  justify-items: space-between;
+  justify-content: flex-end;
   align-items: center;
+  position: relative;
 }

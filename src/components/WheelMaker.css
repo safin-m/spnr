@@ -13,6 +13,8 @@
   height: 500px;
   width: 30%;
   background-color: #1a1e25;
+  position: relative;
+  left: -18rem;
 }
 .wheel-maker:hover {
   border-color: blanchedalmond;
@@ -72,11 +74,11 @@
   background-color: blanchedalmond;
   color: #1c212a;
   border: 1px solid #1c212a;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 .btn:active {
   background-color: #1c212a;
-  color: blanchedalmond;
+  color: rgb(33, 33, 33);
   border: 1px solid blanchedalmond;
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
