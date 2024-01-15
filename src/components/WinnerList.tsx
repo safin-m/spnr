@@ -1,4 +1,3 @@
-import React from "react";
 import "./Winnerlist.css";
 
 const Winnerlist = () => {

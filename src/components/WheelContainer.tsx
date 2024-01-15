@@ -22,6 +22,8 @@ const WheelContainer: React.FC<WheelContainerProps> = ({ wheelItems }) => {
     setSpinReady(true);
   };
 
+  const winnerHandler = () => {};
+
   return (
     <div
       style={{
@@ -40,7 +42,7 @@ const WheelContainer: React.FC<WheelContainerProps> = ({ wheelItems }) => {
           <h4 style={{ color: "blanchedalmond" }}>Try Your Luck!</h4>
           <input type="text" className="form-input" placeholder="Your Name" />
           <input type="text" className="form-input" placeholder="Your Email" />
-          <VscDebugStart className="btn-spin" />
+          <VscDebugStart className="btn-spin" onClick={winnerHandler} />
         </div>
       ) : (
         <MdStart className="btn-spin" onClick={spinMenuHandler} />
