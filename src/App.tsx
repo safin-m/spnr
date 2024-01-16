@@ -25,7 +25,11 @@ const App = () => {
   return (
     <div className="app">
       {wheelActive ? (
-        <WheelContainer wheelItems={wheelItems} setWinners={setWinners} />
+        <WheelContainer
+          wheelItems={wheelItems}
+          setWinners={setWinners}
+          winners={winners}
+        />
       ) : (
         <WheelMaker
           setWheelItems={setWheelItems}

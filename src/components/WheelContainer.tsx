@@ -18,11 +18,13 @@ interface Winner {
 interface WheelContainerProps {
   wheelItems: WheelItem[];
   setWinners: React.Dispatch<React.SetStateAction<Winner[]>>;
+  winners: Winner[];
 }
 
 const WheelContainer: React.FC<WheelContainerProps> = ({
   wheelItems,
   setWinners,
+  winners = [],
 }) => {
   const [spinReady, setSpinReady] = useState(false);
 
@@ -30,22 +32,42 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [discount, setDiscount] = useState("");
+  const [multiplier, setMultiplier] = useState(1);
+  const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
     if (clicked) {
-      setWinners((prevWinners: Winner[]): Winner[] => [
-        ...prevWinners,
-        { name, email, discount },
-      ]);
+      const isValid = validateInput();
+      if (!isValid) return;
+      if (
+        winners.some((winner) => {
+          return winner.email === email;
+        })
+      ) {
+        alert("You've already won");
+        setClicked(false);
+        return;
+      } else {
+        setWinners((prevWinners: Winner[]): Winner[] => [
+          ...prevWinners,
+          { name, email, discount },
+        ]);
+      }
       setClicked(false);
     }
   }, [clicked, name, email, discount]);
 
+  const validateInput = () => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const isValidName = name.trim() !== "";
+    const isValidEmail = emailRegex.test(email);
+    setIsValid(isValidName && isValidEmail);
+    return isValidName && isValidEmail;
+  };
+
   const spinMenuHandler = () => {
     setSpinReady(true);
   };
-
-  //const winnerHandler = () => {};
 
   return (
     <div
@@ -61,6 +83,8 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
             setDiscount(discount.value + " " + discount.type);
             setClicked(true);
           }}
+          multiplier={multiplier}
+          validateInput={validateInput}
         />
       </div>
       {spinReady ? (
@@ -81,6 +105,13 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="number"
+            className="form-input"
+            placeholder="Duration in Seconds"
+            value={multiplier}
+            onChange={(e) => setMultiplier(parseInt(e.target.value))}
           />
           {/* <VscDebugStart className="btn-spin" onClick={winnerHandler} />*/}
         </div>

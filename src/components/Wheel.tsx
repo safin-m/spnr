@@ -10,9 +10,17 @@ interface WheelItem {
 interface WheelProps {
   items: WheelItem[];
   onSpinEnd: (discount: WheelItem) => void;
+  multiplier: number;
+
+  validateInput: () => boolean;
 }
 
-const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
+const Wheel: React.FC<WheelProps> = ({
+  items,
+  onSpinEnd,
+  multiplier,
+  validateInput,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   let rotation = 0;
   let spinTimeout: number | null = null;
@@ -90,12 +98,17 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
   };
 
   const spin = () => {
+    if (!validateInput()) {
+      alert("Please insert valid input");
+      return;
+    }
+
     if (isSpinning) return;
 
     setIsSpinning(true);
 
     const spinInterval = window.setInterval(() => {
-      rotation += Math.PI / 60;
+      rotation += Math.floor(Math.random() * 60) + 40;
       drawWheel();
     }, 10);
 
@@ -103,7 +116,7 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
       window.clearTimeout(spinTimeout);
     }
 
-    const randomSpinTime = Math.floor(Math.random() * 2000) + 3000;
+    const randomSpinTime = multiplier * 1000;
 
     spinTimeout = window.setTimeout(() => {
       window.clearInterval(spinInterval);
