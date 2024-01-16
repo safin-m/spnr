@@ -62,6 +62,7 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
     const isValidName = name.trim() !== "";
     const isValidEmail = emailRegex.test(email);
     setIsValid(isValidName && isValidEmail);
+    console.log(isValid);
     return isValidName && isValidEmail;
   };
 
