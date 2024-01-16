@@ -9,7 +9,7 @@ interface WheelItem {
 
 interface WheelProps {
   items: WheelItem[];
-  onSpinEnd: (value: string) => void;
+  onSpinEnd: (discount: WheelItem) => void;
 }
 
 const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
@@ -22,7 +22,8 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
     startAngle: number,
     arc: number,
     color: string,
-    value: string
+    value: string,
+    type: string
   ) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -52,7 +53,7 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
     ctx.fillStyle = "#000";
     ctx.font = "20px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(value, 0, 0);
+    ctx.fillText(value + " " + type, 0, 0);
     ctx.restore();
   };
 
@@ -66,7 +67,7 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     items.forEach((item, index) => {
-      drawItem(rotation + index * arc, arc, item.color, item.value);
+      drawItem(rotation + index * arc, arc, item.color, item.value, item.type);
     });
 
     drawPointer();
@@ -110,17 +111,17 @@ const Wheel: React.FC<WheelProps> = ({ items, onSpinEnd }) => {
         items.length -
           (rotation % (2 * Math.PI)) / ((2 * Math.PI) / items.length)
       );
-      onSpinEnd(items[winningItemIndex].value);
+      onSpinEnd(items[winningItemIndex]);
+
       setIsSpinning(false);
     }, randomSpinTime);
   };
 
   useEffect(() => {
     drawWheel();
-    canvasRef.current?.addEventListener("click", spin);
   }, []);
 
-  return <canvas ref={canvasRef} width={400} height={400} />;
+  return <canvas ref={canvasRef} width={400} height={400} onClick={spin} />;
 };
 
 export default Wheel;

@@ -31,7 +31,6 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
   };
   const setWheelItemsHandler = () => {
     setWheelItems(itemFields);
-    console.log(itemFields);
     setWheelActive(true);
   };
 
