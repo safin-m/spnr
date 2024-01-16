@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Wheel from "./Wheel";
 import "./WheelContainer.css";
-import { VscDebugStart } from "react-icons/vsc";
 import { MdStart } from "react-icons/md";
 
 interface WheelItem {
