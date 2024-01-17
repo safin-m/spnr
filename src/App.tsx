@@ -22,7 +22,7 @@ const App = () => {
   const [wheelActive, setWheelActive] = useState(false);
   const [winners, setWinners] = useState<Winner[]>([]);
   const [itemFields, setItemFields] = useState<WheelItem[]>([
-    { value: 5, type: "Fixed", color: "#000000" },
+    { value: 0, type: "Fixed", color: "#000000" },
   ]);
 
   return (

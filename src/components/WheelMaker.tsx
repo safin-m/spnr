@@ -25,7 +25,7 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
   const addNewItemFieldHandler = () => {
     setItemFields((prevItems) => [
       ...prevItems,
-      { value: 5, type: "Fixed", color: "#000000" },
+      { value: 0, type: "Fixed", color: "#000000" },
     ]);
   };
   const setWheelItemsHandler = () => {
