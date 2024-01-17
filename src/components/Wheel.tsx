@@ -94,12 +94,25 @@ const Wheel: React.FC<WheelProps> = ({
     if (!ctx) return;
 
     ctx.beginPath();
-    ctx.moveTo(canvas.width - 10, canvas.height / 2 - 20);
+    ctx.moveTo(canvas.width - 10, canvas.height / 2);
+    ctx.lineTo(canvas.width - 10, canvas.height / 2 - 20);
+    ctx.lineTo(canvas.width - 30, canvas.height / 2);
     ctx.lineTo(canvas.width - 10, canvas.height / 2 + 20);
-    ctx.lineTo(canvas.width, canvas.height / 2);
     ctx.closePath();
 
-    ctx.fillStyle = "#000000";
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.stroke();
+
+    const gradient = ctx.createLinearGradient(
+      canvas.width - 10,
+      canvas.height / 2,
+      canvas.width - 30,
+      canvas.height / 2
+    );
+    gradient.addColorStop(0, "red");
+    gradient.addColorStop(1, "blue");
+    ctx.fillStyle = gradient;
     ctx.fill();
   };
 
