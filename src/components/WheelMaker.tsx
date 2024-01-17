@@ -77,6 +77,7 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
               type="number"
               name="value"
               min="1"
+              value={item.value}
               onChange={(event) => handleInputChange(index, event)}
             ></input>
             <select
