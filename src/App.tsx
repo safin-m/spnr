@@ -29,6 +29,7 @@ const App = () => {
           wheelItems={wheelItems}
           setWinners={setWinners}
           winners={winners}
+          setWheelActive={setWheelActive}
         />
       ) : (
         <WheelMaker

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Wheel from "./Wheel";
 import "./WheelContainer.css";
 import { MdStart } from "react-icons/md";
+import { IoIosArrowBack } from "react-icons/io";
 
 interface WheelItem {
   value: number;
@@ -19,12 +20,14 @@ interface WheelContainerProps {
   wheelItems: WheelItem[];
   setWinners: React.Dispatch<React.SetStateAction<Winner[]>>;
   winners: Winner[];
+  setWheelActive: (active: boolean) => void;
 }
 
 const WheelContainer: React.FC<WheelContainerProps> = ({
   wheelItems,
   setWinners,
   winners = [],
+  setWheelActive,
 }) => {
   const [spinReady, setSpinReady] = useState(false);
 
@@ -70,6 +73,10 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
     setSpinReady(true);
   };
 
+  const backHandler = () => {
+    setWheelActive(false);
+  };
+
   return (
     <div
       style={{
@@ -90,6 +97,7 @@ const WheelContainer: React.FC<WheelContainerProps> = ({
       </div>
       {spinReady ? (
         <div className="form">
+          <IoIosArrowBack className="btn-spin" onClick={backHandler} />
           <h4 style={{ color: "blanchedalmond" }}>
             Try Your Luck! Click On The Wheel
           </h4>
