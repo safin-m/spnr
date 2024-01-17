@@ -4,10 +4,10 @@ import { MdAdd } from "react-icons/md";
 import { IoMdDoneAll } from "react-icons/io";
 
 interface WheelItem {
-  value: string;
+  value: number;
   type: string;
   color: string;
-  [key: string]: string;
+  [key: string]: any;
 }
 
 interface WheelMakerProps {
@@ -20,16 +20,24 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
   setWheelActive,
 }) => {
   const [itemFields, setItemFields] = useState<WheelItem[]>([
-    { value: "default value", type: "Fixed", color: "#000000" },
+    { value: 5, type: "Fixed", color: "#000000" },
   ]);
 
   const addNewItemFieldHandler = () => {
     setItemFields((prevItems) => [
       ...prevItems,
-      { value: "default value", type: "Fixed", color: "#000000" },
+      { value: 5, type: "Fixed", color: "#000000" },
     ]);
   };
   const setWheelItemsHandler = () => {
+    if (
+      itemFields.every((item) => {
+        return item.value < 1;
+      })
+    ) {
+      alert("Please insert value above 0");
+      return;
+    }
     setWheelItems(itemFields);
     setWheelActive(true);
   };
@@ -39,6 +47,15 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const values = [...itemFields];
+    if (
+      event.target.name === "value" &&
+      event.target instanceof HTMLInputElement &&
+      event.target.valueAsNumber <= 0
+    ) {
+      alert("Value must be greater than zero");
+
+      return;
+    }
     values[index][event.target.name] = event.target.value;
     setItemFields(values);
   };
@@ -58,7 +75,9 @@ const WheelMaker: React.FC<WheelMakerProps> = ({
         {itemFields.map((item, index) => (
           <div key={index} className="wheel-maker-item">
             <input
+              type="number"
               name="value"
+              min="1"
               onChange={(event) => handleInputChange(index, event)}
             ></input>
             <select

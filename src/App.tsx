@@ -5,10 +5,10 @@ import WinnerList from "./components/WinnerList";
 import WheelContainer from "./components/WheelContainer";
 
 interface WheelItem {
-  value: string;
+  value: number;
   type: string;
   color: string;
-  [key: string]: string;
+  [key: string]: any;
 }
 
 interface Winner {

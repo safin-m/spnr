@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 
 interface WheelItem {
-  value: string;
+  value: number;
   type: string;
   color: string;
-  [key: string]: string;
+  [key: string]: any;
 }
 
 interface WheelProps {
@@ -75,7 +75,13 @@ const Wheel: React.FC<WheelProps> = ({
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     items.forEach((item, index) => {
-      drawItem(rotation + index * arc, arc, item.color, item.value, item.type);
+      drawItem(
+        rotation + index * arc,
+        arc,
+        item.color,
+        item.value.toString(),
+        item.type
+      );
     });
 
     drawPointer();

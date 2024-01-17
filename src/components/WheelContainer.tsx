@@ -4,10 +4,10 @@ import "./WheelContainer.css";
 import { MdStart } from "react-icons/md";
 
 interface WheelItem {
-  value: string;
+  value: number;
   type: string;
   color: string;
-  [key: string]: string;
+  [key: string]: any;
 }
 interface Winner {
   name: string;
