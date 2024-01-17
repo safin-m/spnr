@@ -21,6 +21,9 @@ const App = () => {
   const [wheelItems, setWheelItems] = useState<WheelItem[]>([]);
   const [wheelActive, setWheelActive] = useState(false);
   const [winners, setWinners] = useState<Winner[]>([]);
+  const [itemFields, setItemFields] = useState<WheelItem[]>([
+    { value: 5, type: "Fixed", color: "#000000" },
+  ]);
 
   return (
     <div className="app">
@@ -35,6 +38,8 @@ const App = () => {
         <WheelMaker
           setWheelItems={setWheelItems}
           setWheelActive={setWheelActive}
+          itemFields={itemFields}
+          setItemFields={setItemFields}
         />
       )}
       <WinnerList winners={winners} />

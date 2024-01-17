@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./WheelMaker.css";
 import { MdAdd } from "react-icons/md";
 import { IoMdDoneAll } from "react-icons/io";
@@ -13,16 +12,16 @@ interface WheelItem {
 interface WheelMakerProps {
   setWheelItems: (items: WheelItem[]) => void;
   setWheelActive: (active: boolean) => void;
+  itemFields: WheelItem[];
+  setItemFields: React.Dispatch<React.SetStateAction<WheelItem[]>>;
 }
 
 const WheelMaker: React.FC<WheelMakerProps> = ({
   setWheelItems,
   setWheelActive,
+  setItemFields,
+  itemFields,
 }) => {
-  const [itemFields, setItemFields] = useState<WheelItem[]>([
-    { value: 5, type: "Fixed", color: "#000000" },
-  ]);
-
   const addNewItemFieldHandler = () => {
     setItemFields((prevItems) => [
       ...prevItems,
